@@ -6,7 +6,7 @@ import scala.util.control.Breaks._
   */
 //a naive algorithm
 object RecursiveStaircaseV1 extends App{
-  var count = 0
+  var loopCount = 0
   def climbStaircase(stairs: Int, steps: Int, buffer: ListBuffer[Int]): Unit = {
     breakable {
       for (i <- 1 to steps) {
@@ -17,8 +17,8 @@ object RecursiveStaircaseV1 extends App{
         }
         else if(stairs - i == 0){
           buffer.append(i)
-          count += 1
-          println(count + "->"+ buffer.mkString(","))
+          loopCount += 1
+          println(loopCount + "->"+ buffer.mkString(","))
           buffer.remove(buffer.length-1)
         }
         else break()
@@ -26,8 +26,9 @@ object RecursiveStaircaseV1 extends App{
     }
   }
 
-  count = 0
+  loopCount = 0
   val test1 = climbStaircase(4,2,ListBuffer[Int]())
-  count = 0
+  loopCount = 0
   val test2 = climbStaircase(10,5,ListBuffer[Int]())
+  println("loop count:"+loopCount)
 }
